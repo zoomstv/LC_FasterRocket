@@ -26,7 +26,7 @@ namespace FasterRocket.Patches
                 {
                     if (___shipTimer > 2f)
                     {
-                        ___shipTimer = 50f;
+                        ___shipTimer = 63f;
                     }
                 }
             }
