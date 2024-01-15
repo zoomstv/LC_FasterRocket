@@ -18,18 +18,39 @@ namespace FasterRocket.Patches
 
         [HarmonyPatch("Update")]
         [HarmonyPostfix]
-        static void UpdateShipTimer(ref float ___shipTimer, ref bool ___deliveringOrder, ItemDropship __instance)
+        static void UpdateShipTimer(ref float ___shipTimer, ref bool ___deliveringOrder, ref StartOfRound ___playersManager, ref Terminal ___terminalScript, ItemDropship __instance)
         {
-            if(((NetworkBehaviour)__instance).IsServer)
+            float timeToLandRocket = 10f;
+
+            // ship will land 40 seconds after ordering something.
+            // after (timeToLandRocket) seconds the timer will be set to 41 seconds so the ship lands earlier.
+
+            if (((NetworkBehaviour)__instance).IsServer)
             {
                 if (!___deliveringOrder)
                 {
-                    if (___shipTimer > 2f)
+                    if (___terminalScript.orderedItemsFromTerminal.Count > 0)
                     {
-                        ___shipTimer = 50f;
+                        if (___playersManager.shipHasLanded)
+                        {
+                            if (___shipTimer > timeToLandRocket && ___shipTimer < 40f)
+                            {
+                                ___shipTimer = 41f;
+                            }
+                        }
                     }
                 }
             }
+        }
+
+        [HarmonyPatch("ShipLeave")]
+        [HarmonyPrefix]
+        static void ResetShipTimer(ref float ___shipTimer)
+        {
+            ___shipTimer = 0f;
+
+            // resets the shiptimer after the ship has left.
+            // idk why the game doesn't do this by itself.
         }
     }
 }
