@@ -6,13 +6,13 @@ A mod for the game [Lethal Company](https://store.steampowered.com/app/1966720/L
 
 ## how to use
   - install BepInEx [(how?)](https://docs.bepinex.dev/articles/user_guide/installation/index.html)
-  - download the newest release (the .dll file) [(where?)](https://github.com/zoomstv/LC_24HourClock/releases)
+  - download the newest release (the .dll file) [(where?)](https://github.com/zoomstv/LC_FasterRocket/releases)
   - drag and drop the .dll file into (your Steam directory)/steamapps/common/Lethal Company/BepInEx/plugins/
 
 ## Thunderstore Mod Manager
-  - hopefully available in the [Thunderstore Mod Manager](https://link-url-here.org](https://www.overwolf.com/oneapp/thunderstore-mod-manager)https://www.overwolf.com/oneapp/thunderstore-mod-manager) soon
+  - hopefully available in the [Thunderstore Mod Manager](https://www.overwolf.com/oneapp/Thunderstore-Thunderstore_Mod_Manager) soon
   
 ## additional information
   - server wide (only host has to install it)
   - only has an effect when you are the host of the game
-  - tested on V45
+  - tested on V47
